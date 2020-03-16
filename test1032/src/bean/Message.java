@@ -1,5 +1,6 @@
 package bean;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
 
@@ -11,13 +12,20 @@ public class Message {
     private int fromUserId;//发信人ID
     private int toUserId;//接收人id（0表示公开聊天）
     private  String content;//消息内容
-    private Date createdAt;//发信息时间
+    private Timestamp createdAt;//发信息时间
 
     public Message() {
     }
 
-    public Message(int id, int fromUserId, int toUserId, String content, Date createdAt) {
+    public Message(int id, int fromUserId, int toUserId, String content, Timestamp createdAt) {
         this.id = id;
+        this.fromUserId = fromUserId;
+        this.toUserId = toUserId;
+        this.content = content;
+        this.createdAt = createdAt;
+    }
+
+    public Message(int fromUserId, int toUserId, String content, Timestamp createdAt) {
         this.fromUserId = fromUserId;
         this.toUserId = toUserId;
         this.content = content;
@@ -56,12 +64,23 @@ public class Message {
         this.content = content;
     }
 
-    public Date getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id=" + id +
+                ", fromUserId=" + fromUserId +
+                ", toUserId=" + toUserId +
+                ", content='" + content + '\'' +
+                ", createdAt=" + createdAt +
+                '}';
     }
 
     @Override

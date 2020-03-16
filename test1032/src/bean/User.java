@@ -14,7 +14,6 @@ public class User {
     private int status;//状态(1.正常用户，2.黑名单)
     private Date lastActiveAt;//最近活动时间，举例当前时间小于2分钟表示在线
     private Date createdAt;//注册时间
-
     public User() {
     }
 
@@ -102,5 +101,18 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(id, userName, passWordHash, status, lastActiveAt, createdAt);
+    }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", passWordHash='" + passWordHash + '\'' +
+                ", status=" + status +
+                ", lastActiveAt=" + lastActiveAt +
+                ", createdAt=" + createdAt +
+                '}';
     }
 }
