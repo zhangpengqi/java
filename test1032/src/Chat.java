@@ -1,18 +1,17 @@
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Date;
+import java.util.Scanner;
+import java.sql.Timestamp;
 import bean.Message;
 import impl.MessageDAOImpl;
 import impl.UserDAOImpl;
-
-import java.sql.Timestamp;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
 
 public class Chat {
     int isLock=1;
     Scanner sc=new Scanner(System.in);
     UserDAOImpl userDAOtImpl=new UserDAOImpl();
     MessageDAOImpl messageDAOImpl=new MessageDAOImpl();
-
     /**
      * 聊天室主页
      */
@@ -60,7 +59,7 @@ public class Chat {
                         new Message(
                                 0,
                                 0,
-                                username+"进入了聊天室，当前在线人数"+userDAOtImpl.selectOnlineUsers(),
+                                username+"进入了聊天室",
                                 new Timestamp(new Date().getTime())
                         ));
                 System.out.println("登录成功！");
@@ -102,6 +101,8 @@ public class Chat {
         int isSign=userDAOtImpl.selectUserId(username);
         //账号不存在，调用注册方法注册
         if(isSign==-1){
+            System.out.println("password:"+password);
+            System.out.println("passwordHashCode:"+password);
             userDAOtImpl.register(username,password);
             System.out.println("注册成功，请登录后聊天！");
         }
@@ -133,7 +134,7 @@ public class Chat {
                     for(Message message:messageList){
                         //如果是系统信息
                         if(message.getFromUserId()==0){
-                            System.out.println( "[系统]:"+message.getContent());
+                            System.out.println( "[系统]:"+message.getContent()+"，当前在线人数"+userDAOtImpl.selectOnlineUsers());
                         }else {
                             //如果不是系统信息
                             System.out.println( userDAOtImpl.selectUsername(message.getFromUserId())+":"+message.getContent());

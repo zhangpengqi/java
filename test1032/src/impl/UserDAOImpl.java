@@ -185,9 +185,6 @@ public class UserDAOImpl implements UserDAO {
         PreparedStatement state=null;
         ResultSet result = null;
         Set<Integer> userSet=new HashSet<>();
-        //系统id=0;
-        userSet.add(0);
-        int a=0;
 
         try {
             //1.得到数据库的连接对象
@@ -206,7 +203,7 @@ public class UserDAOImpl implements UserDAO {
             e.printStackTrace();
         }
         DBUtil.releaseResource(conn,state,null);
-        //减去系统id=0，
-        return userSet.size()-1;
+
+        return userSet.size();
     }
 }

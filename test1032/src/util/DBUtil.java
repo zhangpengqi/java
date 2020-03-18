@@ -17,7 +17,11 @@ public class DBUtil {
 			e.printStackTrace();
 		}
 	}
-	//提供静态方法，完成获取数据库连接
+
+	/**
+	 * 提供静态方法，完成获取数据库连接
+	 * @return
+	 */
 	public static Connection getConnection(){
 	Connection conn = null;
 		try {
@@ -29,7 +33,13 @@ public class DBUtil {
 		}
 		return null;
 	}
-	//释放资源
+
+	/**
+	 * 释放资源
+	 * @param conn
+	 * @param st
+	 * @param rs
+	 */
 	public static void releaseResource(Connection conn,Statement st,ResultSet rs){
 		if(rs != null){
 			try {

@@ -2,6 +2,7 @@ package dao;
 import bean.User;
 
 public interface UserDAO {
+
     /**
      * 用户注册
      *
@@ -33,6 +34,7 @@ public interface UserDAO {
      * @return 存在返回用户id，不存在返回-1
      */
     int selectUserId(String username);
+
     /**
      * 更新最后一次活动时间
      * @param username 用户账号
