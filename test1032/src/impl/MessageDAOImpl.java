@@ -12,8 +12,16 @@ import java.util.List;
 
 public class MessageDAOImpl implements MessageDAO {
     private static final String SQL_INSERT_MESSAGE ="INSERT INTO MESSAGE (FROM_USER_ID,TO_USER_ID,CONTENT,CREATED_AT) VALUES (?,?,?,?)";
-    private static final String SQL_FIND_MESSAGES ="SELECT * FROM MESSAGE WHERE CREATED_AT BETWEEN ? AND ? AND TO_USER_ID IN (0,?)" ;
+//    private static final String SQL_FIND_MESSAGES ="SELECT * FROM MESSAGE WHERE CREATED_AT BETWEEN ? AND ? AND TO_USER_ID IN (0,?)" ;
+    private static final String SQL_FIND_MESSAGES ="SELECT * FROM MESSAGE WHERE CREATED_AT BETWEEN ? AND DATE_ADD(?,INTERVAL  1 SECOND ) AND TO_USER_ID IN (0,?)" ;
 
+    /**
+     *  查询用户信息
+     * @param beginTime 开始时间
+     * @param endTime 结束时间
+     * @param userId 用户id
+     * @return 返回信息集合List<message>
+     */
     @Override
     public List<Message> findMessages(Timestamp beginTime, Timestamp endTime, int userId) {
         List<Message> messageList=new ArrayList<>();

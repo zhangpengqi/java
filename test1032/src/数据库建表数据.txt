@@ -1,0 +1,19 @@
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `username` varchar(50) NOT NULL DEFAULT '' COMMENT '账号',
+  `password_hash` char(32) NOT NULL COMMENT '密码哈希值(md5)',
+  `status` int(11) NOT NULL DEFAULT '1' COMMENT '状态(1.正常用户 2.黑名单用户)',
+  `last_active_at` datetime  COMMENT '最近活动时间(举例当前时间小于2分钟表示在线)',
+  `created_at` datetime NOT NULL COMMENT '注册时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `message` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `from_user_id` int NOT NULL COMMENT '发信人ID',
+  `to_user_id` int NOT NULL DEFAULT 0 COMMENT '接收人ID',
+  `content` varchar(140) NOT NULL DEFAULT '' COMMENT '消息内容',
+  `created_at` datetime NOT NULL COMMENT '发信息时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
