@@ -1,0 +1,13 @@
+CREATE TABLE `task1040user`(
+  `id` int (11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL DEFAULT '' COMMENT '账号',
+  `password` varchar(50) NOT NULL DEFAULT '' COMMENT '密码',
+  PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `article`(
+    `id` int (11) NOT NULL AUTO_INCREMENT,
+    `` varchar(50) NOT NULL DEFAULT '' COMMENT '账号',
+    `title` varchar(50) NOT NULL DEFAULT '' COMMENT '标题',
+    `content` varchar(140) NOT NULL DEFAULT '' COMMENT '文章内容',
+  PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
